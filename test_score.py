@@ -60,3 +60,14 @@ def main():
     average = get_average(tests)
     perfect_count = get_perfect_num(tests)
     print_results(lowest,highest,average,perfect_count)
+
+
+def compute_sum_from_file(filename: str) -> int:
+    """computes the sum of integers in a file if there are single intergers per line"""
+    with open(filename,"r") as file:
+        total = 0
+        for line in file.readlines():
+            for item in line:
+                if item != "\n":
+                    total += int(item)
+        return total
