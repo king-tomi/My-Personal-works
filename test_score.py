@@ -6,10 +6,15 @@ PERFECT = 100
 def get_test_scores() -> list:
     print("Welcome to Test Score Analysis Program" + "\n------------------------------")
     items = []
-    for i in range(5):
-        score = input(f"Enter score #{i+1} in the range 1-100: ")
-        if not 1<=score<=100:
-            score = input(f"Enter score #{i+1} in the range 1-100: ")
+    done = False
+    count = 1
+    while not done:
+        score = int(input(f"Enter score #{count} in the range 1-100: "))
+        while not (1<=score<=100):
+            score = int(input(f"Enter score #{count} in the range 1-100: "))
+        count += 1
+        if count == 6:
+            done = True
         items.append(score)
     return items
 
@@ -60,6 +65,8 @@ def main():
     average = get_average(tests)
     perfect_count = get_perfect_num(tests)
     print_results(lowest,highest,average,perfect_count)
+
+main()
 
 
 def compute_sum_from_file(filename: str) -> int:
